@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.kerrelectricalservices.com/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.kerrelectricalservices.com/images/porch-lights-after.jpg</image:loc>
+      <image:caption>New outdoor lights on a sandstone house in Glasgow's Southside, fitted by Kerr Electrical Services</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kerrelectricalservices.com/images/work-gold-light.jpg</image:loc>
+      <image:caption>Brass ceiling light fitted and wired by Kerr Electrical Services</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.kerrelectricalservices.com/images/work-loft-rewire.jpg</image:loc>
+      <image:caption>Eddie from Kerr Electrical Services wiring a loft conversion</image:caption>
+    </image:image>
+  </url>
+</urlset>
