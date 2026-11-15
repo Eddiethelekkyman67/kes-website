@@ -265,6 +265,9 @@ p{margin:0}
 /* Contact */
 .contact-grid{display:grid;grid-template-columns:5fr 6fr;gap:3rem;align-items:start}
 @media (max-width:860px){.contact-grid{grid-template-columns:1fr;gap:2.25rem}}
+.contact-grid.solo{grid-template-columns:1fr;max-width:760px;text-align:center}
+.contact-grid.solo .ways .lead{margin-left:auto;margin-right:auto}
+.contact-grid.solo .ways .btn-row{justify-content:center}
 .ways h2{margin-bottom:.75rem}
 .ways .lead{margin:0 0 1.5rem;max-width:30em}
 .big-num{display:inline-block;font-family:var(--font-display);font-weight:800;font-size:clamp(1.7rem,4vw,2.3rem);color:var(--yellow);text-decoration:none;letter-spacing:.01em;margin-bottom:1rem}
@@ -518,7 +521,7 @@ p{margin:0}
     <div class="faq">
       <details>
         <summary>How do I get a quote, and is it free?</summary>
-        <p>Quotes are free. Call, text or WhatsApp <a href="tel:+447469042726">07469 042726</a>, or send the details using the form below. A photo of the job helps. For bigger jobs we'll come out and look. We aim to get back to you with a quote within 24 hours.</p>
+        <p>Quotes are free. Call, text or WhatsApp <a href="tel:+447469042726">07469 042726</a>. A photo of the job helps. For bigger jobs we'll come out and look. We aim to get back to you with a quote within 24 hours.</p>
       </details>
       <details>
         <summary>Do you cover my area?</summary>
@@ -565,10 +568,10 @@ p{margin:0}
 </section>
 
 <section class="band dark contact" id="contact">
-  <div class="wrap contact-grid">
+  <div class="wrap contact-grid solo" data-contact-grid>
     <div class="ways">
       <span class="eyebrow">Get a quote</span>
-      <h2>Quotes are free. Call, message or send the details.</h2>
+      <h2>Quotes are free. Call or message us.</h2>
       <p class="lead">Quickest is a call or a WhatsApp. Either way, tell us what needs doing and where you are.</p>
       <a class="big-num" href="tel:+447469042726">07469 042726</a>
       <div class="btn-row">
@@ -583,7 +586,7 @@ p{margin:0}
       </p>
     </div>
 
-    <div class="form-card">
+    <div class="form-card" data-form-card hidden>
       <form id="quote-form" novalidate>
         <h3>Send us the details</h3>
         <p class="hint">We'll get back to you within 24 hours with a price or a time to come and look.</p>
@@ -647,7 +650,7 @@ p{margin:0}
   // (e.g. "https://calendly.com/kerr-electrical/quote-visit"). Shown in the contact section once set.
   var BOOKING_URL = "";
   // Form delivery: a Formspree endpoint, e.g. "https://formspree.io/f/abcdwxyz" (free, emails info@...).
-  // Until set, the form hands the typed message to WhatsApp / text / email instead.
+  // The form is hidden until this is set; paste the endpoint and it appears on the page.
   var FORM_ENDPOINT = "";
   // Christmas-lights note under "Meet Eddie": set to false in January to hide it.
   var SEASONAL_BANNER = true;
@@ -677,7 +680,11 @@ p{margin:0}
     var y = document.querySelector("[data-year]");
     if (y) { y.textContent = String(new Date().getFullYear()); }
 
-    // Quote form
+    // Quote form: only shown once FORM_ENDPOINT is set
+    if (FORM_ENDPOINT) {
+      var card = document.querySelector("[data-form-card]"); if (card) { card.hidden = false; }
+      var grid = document.querySelector("[data-contact-grid]"); if (grid) { grid.classList.remove("solo"); }
+    }
     var form = document.getElementById("quote-form");
     var note = document.getElementById("form-note");
     var sent = document.getElementById("form-sent");
